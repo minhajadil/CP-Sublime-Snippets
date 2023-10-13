@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[
+#define pii pair<int,int>
+const int N = 1e5+10 ;
+vector<pair<int,int>> adj[N] ;
+bool vis[N] ;
+
+long long cost = 0 ;
+
+void prims(int source)
+{
+    priority_queue<pair<int,pii>, vector<pair<int,pii>>,greater<pair<int,pii>>> pq ;
+    pq.push({0,{1,1}});
+    vis[source] = true ;
+
+    while(!pq.empty())
+    {
+        auto cur = pq.top() ;
+        pq.pop() ;
+        int cur_node = cur.second.second ;
+        
+       if(vis[cur_node]!=true) cost+=cur.first ;
+       vis[cur_node]= true ;
+
+        for(auto it : adj[cur_node])
+        {
+            if(vis[it.first]!=true)
+            { pq.push({it.second,{cur_node,it.first}}) ; }
+        }
+    }
+
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>prims</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

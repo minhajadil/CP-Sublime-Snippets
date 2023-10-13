@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+bool marked[1000000+10] ;
+ 
+void sieve(int n)
+{
+	marked[1]= true ;
+	marked[0] = true ;
+	
+	for(int i =2 ;i*i<=n ;i++)
+	{
+		if(marked[i]==false) 
+		{
+			for(int j = i*i ;j<=n ;j+=i)
+			{
+				marked[j]=true ;
+			}
+		}
+		
+	}
+	 
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>sieve</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

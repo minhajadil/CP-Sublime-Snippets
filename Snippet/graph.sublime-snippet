@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+const int  N = 1e6 ;
+vector<int>adj[N] ;
+ 
+bool vis[N] ;
+int l[N] ;
+ 
+void bfs(int v)
+{
+  queue<int> q ;
+  q.push(v) ;
+  vis[v]= true ;
+  l[v]=0 ;
+ 
+  while(!q.empty())
+  {
+    int cur = q.front() ;
+    q.pop() ;
+ 
+    for(int n : adj[cur])
+    {
+     if(!vis[n])
+     { q.push(n) ;
+      vis[n]= true ;
+      l[n]= l[cur]+1 ;
+    }
+    }
+ 
+  } 
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>bfs</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
