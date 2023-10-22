@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[
+
+// sparse table (Range query : min , max , gcd in O(nlogn))
+
+const int MAX = 1e5+10 ;
+const int LOG = 25 ;
+int A[MAX] ;
+int ANS[MAX][LOG] ; // i = starting point , j = size of the range
+
+int power[MAX] ;
+
+int Query(int L , int R)
+{
+    int Range = R-L+1 ;
+    int k = power[Range] ;
+
+    return min(ANS[L][k],ANS[(R-(1<<k)+1)][k]) ;
+}
+
+ void build_ans(int n )
+ {
+ 
+    power[1] =0 ;
+
+    for(int i =2 ;i<MAX ;i++) // precomputing log 
+    {
+        power[i] = power[i/2] +1 ;
+    }
+
+    for(int i =0 ;i<n ;i++)
+    {
+        ANS[i][0]= A[i] ;
+    }
+
+    for(int j =1 ;j<LOG  ;j++) // precomputing the ans
+    {
+        for(int i =0 ;i+((1<<j)-1)<n ;i++)
+        {
+            ANS[i][j]= min(ANS[i][j-1],ANS[i+(1<<(j-1))][j-1]) ;
+        }
+    }
+
+}
+//////////////////////////////////////////////////////////////
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>sparse table</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
