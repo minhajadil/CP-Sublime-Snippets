@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[
+// segment tree (range query(logn) with update(logn) ,build(n) )
+
+const int N = 1e5+10 ;
+int a[N] ;
+int MIN[N*4] ;
+long long  SUM[N*4] ;
+
+void build_tree(int node , int b , int e)
+{
+    if(b==e)
+    { // ** change 
+        MIN[node] = a[b] ;
+        SUM[node] = a[b] ;
+        return ;
+    }
+
+    int left = node*2 ;
+    int right = left+1 ;
+    int mid = (b+e)/2 ;
+    build_tree(left ,b ,mid) ;
+    build_tree(right , mid+1 , e) ;
+
+    MIN[node]= min(MIN[left],MIN[right]) ;
+    SUM[node] = SUM[left] + SUM[right] ;
+}
+
+void update(int node , int b , int e , int i , int x)
+{
+    if(b>i || e<i) return ;
+    if(b==i && e==i)
+    {
+        MIN[node] =x ;
+        SUM[node] =x ;
+        return ;
+    }
+
+    int left = node*2 ;
+    int right = left+1 ;
+    int mid = (b+e)/2 ;
+
+    update(left , b,mid , i , x ) ;
+    update(right,mid+1,e , i ,x ) ;
+
+    MIN[node]= min(MIN[left],MIN[right]) ;
+    SUM[node] = SUM[left] + SUM[right] ;
+}
+
+int query(int node , int b , int e , int i , int j)
+{
+    if(b>j || e<i ) return 1000000009 ; // ** change 
+
+    if(i<=b && j>=e) return MIN[node] ;
+
+    int left = node*2 ;
+    int right = left+1 ;
+    int mid = (b+e)/2 ;
+
+    int left_part = query(left,b,mid,i,j) ;
+    int right_part = query(right,mid+1,e,i,j) ;
+    return min(left_part,right_part) ; // **change
+}
+
+/////////////////////////////////////////////////////////
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>segment tree</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
