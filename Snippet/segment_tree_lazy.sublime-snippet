@@ -1,0 +1,70 @@
+<snippet>
+	<content><![CDATA[
+// segment tree with lazy propagation (ST with range update logn)
+const int N = 1e5+10 ;
+long long a[N] ;
+long long lazy[N*4+1];
+long long sum[N*4+1];
+
+
+void build_tree(int node , int s , int e )
+{
+    if(s==e)
+    {
+        sum[node] = a[s] ;
+        return ;
+    }
+    int mid = (s+e)/2 ;
+    int left = 2*node ;
+    int right = 2*node+1 ;
+
+    build_tree(left,s,mid) ;
+    build_tree(right ,mid+1,e) ;
+
+    sum[node] = sum[left] + sum[right] ;
+}
+
+void update (int node , int s , int e ,int i , int j , long long v)
+{
+    // lazy 
+    if(lazy[node]!=0)
+    {
+        sum[node]+= (e-s+1)*lazy[node] ;
+
+        if(s!=e)
+        {
+            lazy[2*node]+= lazy[node] ;
+            lazy[2*node+1]+=lazy[node] ;
+        }
+        lazy[node] =0 ;
+    }
+
+    if(j<s || e<i) return ;
+
+    if(i<=s and j>=e)
+    {
+        sum[node]+=(e-s+1)*v ;
+
+        if(s!=e)
+        {
+            lazy[2*node]+= v ;
+            lazy[2*node+1]+=v ;
+        }
+        return ;
+    }
+
+    int mid = (s+e)/2 ;
+    int left = 2*node;
+    int right = 2*node +1 ;
+
+    update(left,s,mid , i , j , v) ;
+    update(right,mid+1,e,i,j,v) ;
+
+    sum[node]= sum[left]+sum[right] ;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>segment tree lazy </tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
