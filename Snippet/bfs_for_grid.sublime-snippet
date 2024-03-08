@@ -1,7 +1,16 @@
 <snippet>
 	<content><![CDATA[
+
 bool vis[1001][1001] ;
 int level[1001][1001] ;
+
+
+// i = starting points x co-ordinate 
+// j = starting points y co-ordinate 
+// it = ending points x co-ordinate 
+// ij = ending points y co-ordinate 
+// N = the size of the given grid
+
 
 void bfs(int i , int j , int it , int ij,int N)
 {
@@ -27,14 +36,14 @@ void bfs(int i , int j , int it , int ij,int N)
     {
         pair<int,int> cur = q.front() ;
         q.pop() ;
-       // cout << level[cur.first][cur.second] << endl ;
+
        
         for(int k =0 ;k<8 ;k++)
         {
             int x = cur.first+X[k] ;
             int y = cur.second+Y[k] ;
             
-           // cout << x << " " << y << endl ;
+           
             
             if(x>0 && y>0 && x<=N && y<=N && !vis[x][y] )
             {
@@ -52,7 +61,7 @@ void bfs(int i , int j , int it , int ij,int N)
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>bfsgrid</tabTrigger> 
+	<tabTrigger>bfs_grid</tabTrigger> 
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

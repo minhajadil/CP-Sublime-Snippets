@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-// segment tree (range query(logn) with update(logn) ,build(n) )
+// segment tree -range query-(logn) with update- (logn) ,building the tree-(n) 
 
 const int N = 1e5+10 ;
 int a[N] ;

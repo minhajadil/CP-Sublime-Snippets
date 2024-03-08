@@ -1,5 +1,8 @@
 <snippet>
 	<content><![CDATA[
+
+// nlogn algorithm to generate all prime number till a range
+
 bool marked[1000000+10] ;
  
 void sieve(int n)

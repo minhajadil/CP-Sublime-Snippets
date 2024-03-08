@@ -5,6 +5,10 @@ using namespace std ;
 
 //............// define///.................... //
 
+
+// boilerplate for the contest question with testcases
+
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double lld;

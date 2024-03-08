@@ -6,6 +6,9 @@ using namespace std ;
 //............// define///.................... //
 
 
+// boilerplate for non testcase contest question
+
+
 
 
 typedef long long ll;

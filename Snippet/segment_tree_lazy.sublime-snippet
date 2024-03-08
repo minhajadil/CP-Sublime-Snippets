@@ -1,6 +1,8 @@
 <snippet>
 	<content><![CDATA[
-// segment tree with lazy propagation (ST with range update logn)
+// segment tree with lazy propagation 
+(ST with range update in logn)
+
 const int N = 1e5+10 ;
 long long a[N] ;
 long long lazy[N*4+1];

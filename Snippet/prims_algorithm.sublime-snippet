@@ -1,5 +1,8 @@
 <snippet>
 	<content><![CDATA[
+
+// prims algo to find the least cost of a path that connects all the nodes of a graph without a loop. (MST)
+
 #define pii pair<int,int>
 const int N = 1e5+10 ;
 vector<pair<int,int>> adj[N] ;

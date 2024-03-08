@@ -1,7 +1,9 @@
 <snippet>
 	<content><![CDATA[
+
+
 const int dx4[4] = {1,0,-1,0}, dy4[4] = {0,1,0,-1};
-const int dx8[8] = {1, 0, -1, 0, 1, 1, -1, -1}, dy8[8] = {0, 1, 0, -1, -1, 1, -1, 1};
+const int dx8[8] = {1, 0, -1, 0, 1, 1, -1, -1}, dy8[8] = {0, 1, 0, -1, -1, 1, -1, 1};  // moves where diagonal is also included
  int KnightX[8] = { 2, 1, -1, -2, -2, -1, 1, 2 },  KnightY[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
