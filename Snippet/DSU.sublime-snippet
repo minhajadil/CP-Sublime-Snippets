@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+class DSU{
+ 
+private:
+    vector<int> leader , group_size ;
+    int component;
+ 
+public:
+    DSU(int n){
+        leader.resize(n+1) ;
+        group_size.resize(n+1) ;
+        iota(leader.begin(),leader.end(),0) ;
+        group_size.resize(n+1,1) ;
+        component = n ;
+    }
+ 
+    int FIND(int node){
+        if(leader[node]==node){
+            return node ;
+        }
+        return leader[node] = FIND(leader[node]) ;
+    }
+ 
+ 
+    void UNION(int u , int v){
+        int leadA = FIND(u) ;
+        int leadB = FIND(v) ;
+ 
+        if(leadA!=leadB){
+            if(group_size[leadA]<group_size[leadB])
+                swap(leadA,leadB) ;
+            leader[leadB] = leadA ;
+            component-- ;
+ 
+        }
+    }
+ 
+    int component_number(){
+        return component ;
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>DSU</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
